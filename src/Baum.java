@@ -6,13 +6,32 @@ public class Baum {
     private Knoten wurzel;
 
     public boolean isEmpty() {
-        boolean wert = false;
-
-        return wert;
+        return wurzel == null;
     }
 
     public void add(int pos) {
+        if (wurzel == null) {
+            wurzel = new Knoten();
+            wurzel.wert = pos;
+        } else {
+            Knoten k = wurzel;
+            while (k != null) {
+                if (pos < k.wert) {
+                    k = k.links;
+                } else {
+                    if (pos > k.wert) {
+                        if (k.rechts == null) {
+                            k.rechts = new Knoten();
+                            k.rechts.wert = pos;
+                        }
 
+                        k = k.rechts;
+                    } else {
+                        return;
+                    }
+                }
+            }
+        }
     }
 
     public int size() {
@@ -21,4 +40,10 @@ public class Baum {
         return groesse;
     }
 
+    private class Knoten {
+        private int wert;
+        private Knoten rechts;
+        private Knoten links;
+
+    }
 }
