@@ -9,41 +9,70 @@ public class Baum {
         return wurzel == null;
     }
 
-    public void add(int pos) {
-        if (wurzel == null) {
-            wurzel = new Knoten();
-            wurzel.wert = pos;
-        } else {
-            Knoten k = wurzel;
-            while (k != null) {
-                if (pos < k.wert) {
-                    k = k.links;
-                } else {
-                    if (pos > k.wert) {
-                        if (k.rechts == null) {
-                            k.rechts = new Knoten();
-                            k.rechts.wert = pos;
-                        }
 
-                        k = k.rechts;
-                    } else {
+    public void add(int neu) {
+        if (wurzel == null) {
+            this.wurzel = new Knoten();
+            this.wurzel.wert = neu;
+        } else {
+            Knoten k = this.wurzel;
+            while (k != null) {
+                if (neu < k.wert) {
+                    //todo
+                    if (k.links == null) {
+                        k.links = new Knoten();
+                        k.links.wert = neu;
                         return;
                     }
+                    k = k.links;
+                } else if (neu > k.wert) {
+                    if (k.rechts == null) {
+                        k.rechts = new Knoten();
+                        k.rechts.wert = neu;
+                        return;
+                    }
+                    k = k.rechts;
+                } else {
+                    return;
                 }
             }
         }
     }
 
-    public int size() {
-        int groesse = 0;
+    public boolean contains(int suchwert) {
+        boolean beinhaltet = false;
 
-        return groesse;
+        Knoten k = this.wurzel;
+
+        int i = k.wert;
+        while (i != suchwert) {
+            if (suchwert < k.wert) {
+                k=k.links;
+                if (k.links.wert == suchwert) {
+                    beinhaltet = true;
+                    i = suchwert;
+                }
+            } else {
+                if (suchwert > k.wert) {
+                    k=k.rechts;
+                    if (k.rechts.wert == suchwert) {
+                        beinhaltet = true;
+                        i = suchwert;
+                    } else {
+                        i = suchwert;
+                    }
+                }
+            }
+        }
+
+        return beinhaltet;
     }
 
     private class Knoten {
         private int wert;
-        private Knoten rechts;
-        private Knoten links;
+        private Knoten rechts = null;
+        private Knoten links = null;
 
     }
+
 }
