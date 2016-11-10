@@ -18,7 +18,6 @@ public class Baum {
             Knoten k = this.wurzel;
             while (k != null) {
                 if (neu < k.wert) {
-                    //todo
                     if (k.links == null) {
                         k.links = new Knoten();
                         k.links.wert = neu;
@@ -47,14 +46,14 @@ public class Baum {
         int i = k.wert;
         while (i != suchwert) {
             if (suchwert < k.wert) {
-                k=k.links;
+                k = k.links;
                 if (k.links.wert == suchwert) {
                     beinhaltet = true;
                     i = suchwert;
                 }
             } else {
                 if (suchwert > k.wert) {
-                    k=k.rechts;
+                    k = k.rechts;
                     if (k.rechts.wert == suchwert) {
                         beinhaltet = true;
                         i = suchwert;
