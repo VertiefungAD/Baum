@@ -9,6 +9,9 @@ public class Testklasse {
         if (Test.test2()) {
             System.out.println("Nicht beinhaltete Zahlen wurden fälschlicherweise gefunden!");
         }
+        if (Test.test3()) {
+            System.out.println("Die Größe stimmt nicht!");
+        }
     }
 
     private static class Test {
@@ -63,6 +66,32 @@ public class Testklasse {
             if (!testBaum2.contains(55)) test2 = false;
             System.out.println("Baum 2 geprüft");
             return test2;
+        }
+
+        private static boolean test3() {
+            boolean test3 = true;
+
+            Baum testBaum3 = new Baum();
+            testBaum3.add(8);
+            testBaum3.add(4);
+            testBaum3.add(12);
+            testBaum3.add(2);
+            testBaum3.add(6);
+            testBaum3.add(10);
+            testBaum3.add(14);
+            testBaum3.add(1);
+            testBaum3.add(3);
+            testBaum3.add(5);
+            testBaum3.add(7);
+            testBaum3.add(9);
+            testBaum3.add(11);
+            testBaum3.add(13);
+            testBaum3.add(15);
+            System.out.println("Size geprüft: "+testBaum3.size());
+
+            if (testBaum3.size() != 15) test3 = false;
+
+            return test3;
         }
 
     }

@@ -11,7 +11,7 @@ public class Baum {
 
 
     public void add(int neu) {
-        if (wurzel == null) {
+        if (this.wurzel == null) {
             this.wurzel = new Knoten();
             this.wurzel.wert = neu;
         } else {
@@ -41,20 +41,20 @@ public class Baum {
     public boolean contains(int suchwert) {
         boolean beinhaltet = false;
 
-        Knoten k = this.wurzel;
+        Knoten kc = this.wurzel;
 
-        int i = k.wert;
+        int i = kc.wert;
         while (i != suchwert) {
-            if (suchwert < k.wert) {
-                k = k.links;
-                if (k.links.wert == suchwert) {
+            if (suchwert < kc.wert) {
+                kc = kc.links;
+                if (kc.links.wert == suchwert) {
                     beinhaltet = true;
                     i = suchwert;
                 }
             } else {
-                if (suchwert > k.wert) {
-                    k = k.rechts;
-                    if (k.rechts.wert == suchwert) {
+                if (suchwert > kc.wert) {
+                    kc = kc.rechts;
+                    if (kc.rechts.wert == suchwert) {
                         beinhaltet = true;
                         i = suchwert;
                     } else {
@@ -67,11 +67,79 @@ public class Baum {
         return beinhaltet;
     }
 
+//                                                               NullPointerException:
+
+//    public int size() {
+//        int groesse = 0;
+//
+//        Knoten ks = this.wurzel;
+//        int s = ks.wert;
+//        if (this.wurzel == null) groesse = 0;
+//
+//        while (!this.wurzel.kruemel) {
+//
+//            while (!ks.kruemel) {
+//                ks = ks.links;
+//            }
+//            ks.kruemel = true;
+//        }
+//        return groesse;
+//    }
+
+//                                                              Sehr großer Aufwand:
+
+//    public int size() {
+//        int groesse = 0;
+//
+//        while (wurzel.kruemel) {
+//            if (wurzel == null) return 0;
+//            while (true) {
+//                Knoten temp = wurzel;
+//                while (true) {
+//                    if (temp != null && !temp.links.kruemel) temp = temp.links;
+//                    else if (temp.rechts != null && !temp.rechts.kruemel) temp = temp.rechts;
+//                    else {
+//                        temp.kruemel = true;
+//                        groesse++;
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//
+////        Krümel einsammeln
+//
+//        while (wurzel.kruemel) {
+//            if (wurzel == null) return 0;
+//            while (true) {
+//                Knoten temp = wurzel;
+//                while (true) {
+//                    if (temp != null && temp.links.kruemel) temp = temp.links;
+//                    else if (temp.rechts != null && temp.rechts.kruemel) temp = temp.rechts;
+//                    else {
+//                        temp.kruemel = false;
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//
+//        return groesse;
+//    }
+
+    private int size(){
+        int groesse=0;
+
+        
+
+        return groesse;
+    }
+
     private class Knoten {
         private int wert;
         private Knoten rechts = null;
         private Knoten links = null;
-
+        private boolean kruemel = false;
     }
 
 }
