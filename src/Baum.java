@@ -127,10 +127,23 @@ public class Baum {
 //        return groesse;
 //    }
 
-    private int size(){
-        int groesse=0;
+    public int size() {
+        int groesse = 0;
+        if (wurzel == null) return 0;
 
-        
+        List<Knoten> liste = new List<>();
+
+        liste.add(wurzel);
+        while (!liste.isEmpty()) {
+            Knoten knoten = liste.remove(0);
+            groesse++;
+            if (knoten.links != null) {
+                liste.add(0, knoten.links);
+            }
+            if (knoten.rechts != null) {
+                liste.add(0, knoten.rechts);
+            }
+        }
 
         return groesse;
     }

@@ -9,7 +9,7 @@ public class Testklasse {
         if (Test.test2()) {
             System.out.println("Nicht beinhaltete Zahlen wurden fälschlicherweise gefunden!");
         }
-        if (Test.test3()) {
+        if (!Test.test3()) {
             System.out.println("Die Größe stimmt nicht!");
         }
     }
@@ -87,7 +87,7 @@ public class Testklasse {
             testBaum3.add(11);
             testBaum3.add(13);
             testBaum3.add(15);
-            System.out.println("Size geprüft: "+testBaum3.size());
+            System.out.println("Size geprüft: " + testBaum3.size());
 
             if (testBaum3.size() != 15) test3 = false;
 
